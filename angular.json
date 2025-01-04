@@ -35,7 +35,8 @@
               }
             ],
             "styles": ["src/global.scss", "src/theme/variables.scss"],
-            "scripts": [],
+            "scripts": ["src/assets/javascript/tf.min.js",
+                     	"src/assets/javascript/teachablemachine-image.min.js"],
             "browser": "src/main.ts"
           },
           "configurations": {
@@ -128,7 +129,10 @@
     }
   },
   "cli": {
-    "schematicCollections": ["@ionic/angular-toolkit"]
+    "schematicCollections": [
+      "@ionic/angular-toolkit"
+    ],
+    "analytics": "ad473527-fc6d-4c7b-be28-976248647b45"
   },
   "schematics": {
     "@ionic/angular-toolkit:component": {

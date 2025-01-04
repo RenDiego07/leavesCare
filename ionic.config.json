@@ -1,0 +1,7 @@
+{
+  "name": "leavesCare",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

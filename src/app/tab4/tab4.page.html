@@ -1,0 +1,65 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik+Vinyl&display=swap" rel="stylesheet">
+
+
+<ion-header [translucent]="true" >
+  <ion-toolbar>
+    <ion-title style="text-align: center;" class="title-font"> Diagnose</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form action="" [formGroup]="myForm" style="margin-left: 20px;">
+      <ion-select formControlName="type" placeHolder="Leaf type" (ionChange)= "changeValue($event)">
+        <ion-select-option value="Potato">Potato</ion-select-option>
+        <ion-select-option value="Apple">Apple</ion-select-option>
+        <ion-select-option value="Grape">Grape</ion-select-option>
+      </ion-select>
+
+  </form >
+  
+  
+  <input #fileInput type="file" accept="image/*" (change)= "onFileSelected($event)" hidden />
+
+  <ion-card style="margin-top: 30px;"  (click)="selected_value() ? fileInput.click() : null" >
+    
+    <ion-card-content class="div_horizontal">
+        <div class=" container_items_centered">
+            <h1>Health check</h1>
+            <p>Receive instant identifications and treatment Suggestions</p>
+        </div>
+        <div class="container_items_centered">
+            <img src="../../assets/images/Leaf.png" alt="" height="100px" width="100px" style="padding:20px;">
+        </div>
+    </ion-card-content>
+  </ion-card>
+
+  @if(imageReady()){
+    <ion-card class="container_items_centered">
+        <img #image [src]="imageUrl()" alt="">
+    </ion-card>
+    @if(modelLoaded()) {
+
+      <div class="ion-text-center ion-padding-top ion-padding-bottom">
+        <ion-button fill="outline" color="success" (click)="predict()">Predecir</ion-button>
+      </div>
+  
+      <ion-list>
+        <ion-item>
+          <ion-label>Clases: {{ classLabels }} </ion-label>
+        </ion-item>
+        <!-- Itere sobre la lista de predicciones -->
+        @for (item of predictions; track $index) {
+        <ion-item>
+          <ion-label> {{ item?.className }} : {{ item?.probability | percent }} </ion-label>
+        </ion-item>
+        }
+  
+      </ion-list>
+  
+      }
+  }
+
+ 
+</ion-content>

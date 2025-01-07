@@ -1,6 +1,6 @@
 import { Component} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IonHeader, IonToolbar, IonTitle, IonContent,      IonCard, IonCardHeader, IonCardTitle, IonCardContent,
+import { IonHeader, IonToolbar, IonTitle, IonContent,IonCard, IonCardHeader, IonCardTitle, IonCardContent,
   IonSelect, IonSelectOption, IonTextarea,IonButton,
   IonList, IonItem, IonLabel, } from '@ionic/angular/standalone';
 import { ExploreContainerComponent } from '../explore-container/explore-container.component';

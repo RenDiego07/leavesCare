@@ -22,7 +22,7 @@
   
   <input #fileInput type="file" accept="image/*" (change)= "onFileSelected($event)" hidden />
 
-  <ion-card style="margin-top: 30px;"  (click)="selected_value() ? fileInput.click() : null" >
+  <ion-card class="clickable" style="margin-top: 30px;"  (click)="selected_value() ? fileInput.click() : null" >
     
     <ion-card-content class="div_horizontal">
         <div class=" container_items_centered">

@@ -7,6 +7,7 @@ import { addIcons } from 'ionicons';
 import { ReactiveFormsModule } from '@angular/forms'; 
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { TeachablemachineService } from '../services/teachablemachine.service';
+import { ProviderService } from '../services/provider.service';
 
 @Component({
   selector: 'app-tab4',
@@ -34,7 +35,8 @@ export class Tab4Page {
      classLabels: string[] = [];
 
 
-  constructor(private teachablemachine: TeachablemachineService) {
+  constructor(private teachablemachine: TeachablemachineService, 
+    private providerService: ProviderService) {
       addIcons({ cloudUploadOutline });
    }
    
@@ -78,8 +80,8 @@ export class Tab4Page {
 
         // Convertir el archivo a una URL base64 para mostrarlo en el html
         reader.onload = () => {
-          this.imageUrl.set(reader.result as string)
-          this.imageReady.set(true)
+          this.imageUrl.set(reader.result as string);
+          this.imageReady.set(true);
            // console.log(reader.result as string)
         };
 
@@ -90,6 +92,9 @@ async predict() {
   try {
       const image = this.imageElement.nativeElement;
       this.predictions = await this.teachablemachine.predict(image);
+      this.providerService.createDocument("history",{ image: this.imageUrl(),
+        predictions: this.predictions
+      });
   } catch (error) {
       console.error(error);
       alert('Error al realizar la predicción.');

@@ -26,7 +26,11 @@ export const myroutes: Routes = [
         loadComponent: () =>
           import('../tab4/tab4.page').then((m)=> m.Tab4Page),
       },
-      
+      {
+        path: 'tab5',
+        loadComponent: () =>
+          import('../tab5/tab5.page').then((m)=> m.Tab5Page),
+      },
       {
         path: '',
         redirectTo: '/tabs/tab1',
